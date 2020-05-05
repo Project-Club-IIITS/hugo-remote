@@ -16,7 +16,7 @@ cd ${GITHUB_WORKSPACE}
 hugo version || exit 1
 
 echo '👯 Clone remote repository'
-git clone https://github.com/${REMOTE} ${DEST}
+git clone https://github.com/${REMOTE} ${DEST} --branch master
 
 echo '🧹 Clean site'
 if [ -d "${DEST}" ]; then
@@ -32,5 +32,6 @@ git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git add .
 git commit -am "🚀 Deploy with ${GITHUB_WORKFLOW}"
-git remote set-url origin https://${USER}:${TOKEN}@github.com/${REMOTE}
-git push -f -q origin master
+git remote add publisher https://${USER}:${TOKEN}@github.com/${REMOTE}
+git remote -v
+git push -fq publisher master

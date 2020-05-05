@@ -32,6 +32,6 @@ git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git add .
 git commit -am "🚀 Deploy with ${GITHUB_WORKFLOW}"
-git remote add publisher https://${USER}:${TOKEN}@github.com/${REMOTE}
+git remote add publisher "https://${USER}:${TOKEN}@github.com/${REMOTE}"
 git remote -v
 git push -fq publisher master

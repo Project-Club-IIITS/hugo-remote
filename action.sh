@@ -24,7 +24,7 @@ if [ -d "${DEST}" ]; then
 fi
 
 echo '🍳 Build site'
-hugo -d ${DEST}
+hugo -d ${DEST} ${ARGS}
 
 echo '🎁 Publish to remote repository'
 cd ${DEST}

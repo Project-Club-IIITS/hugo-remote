@@ -32,5 +32,5 @@ git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git add .
 git commit -am "🚀 Deploy with ${GITHUB_WORKFLOW}"
-git remote set-url remote https://${USER}:${TOKEN}@github.com/scuzzlebuzzle/ol3-1.git
-git push -f -q remote master
+git remote set-url origin https://${USER}:${TOKEN}@github.com/scuzzlebuzzle/ol3-1.git
+git push -f -q origin master

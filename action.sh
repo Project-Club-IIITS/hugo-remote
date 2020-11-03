@@ -17,7 +17,7 @@ cd ${BUILD_DIR}
 hugo version || exit 1
 
 echo '👯 Clone remote repository'
-git clone https://github.com/${REMOTE} ${DEST} --branch master
+git clone https://github.com/${REMOTE} ${DEST} --branch main
 
 echo '🧹 Clean site'
 if [ -d "${DEST}" ]; then
@@ -36,7 +36,7 @@ if [ -n "$(git status --porcelain)" ]; then
     git commit -am "🚀 Deploy with ${GITHUB_WORKFLOW}"
     git remote add publisher "https://${USER}:${TOKEN}@github.com/${REMOTE}"
     git remote -v
-    git push -fq publisher master
+    git push -fq publisher main
 else
     echo 'No changes to build :)'
 fi

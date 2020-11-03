@@ -13,6 +13,7 @@ curl -sSL https://github.com/gohugoio/hugo/releases/download/${HUGO_VERSION}/hug
 mv hugo /usr/local/bin/
 cd .. && rm -rf tmp/
 cd ${GITHUB_WORKSPACE}
+cd ${BUILD_DIR}
 hugo version || exit 1
 
 echo '👯 Clone remote repository'

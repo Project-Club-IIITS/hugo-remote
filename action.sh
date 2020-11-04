@@ -27,6 +27,12 @@ fi
 echo '🍳 Build site'
 hugo -d ${DEST} ${ARGS}
 
+if [[ ! -z "${CNAME}" ]]; then
+    if [[ ! "${CNAME}" == "$(cat ${DEST}/CNAME)" ]]; then
+        exit 1
+    fi
+fi
+
 echo '🎁 Publish to remote repository'
 cd ${DEST}
 git config user.name "${GITHUB_ACTOR}"

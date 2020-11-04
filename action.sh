@@ -1,8 +1,6 @@
 #!/bin/bash
 
-if [[ -z ${CNAME} ]]; then
-    CNAME=""
-fi
+set -v
 
 # Fail if variables are unset
 set -eu -o pipefail
@@ -31,11 +29,18 @@ fi
 echo '🍳 Build site'
 hugo -d ${DEST} ${ARGS}
 
+set +eu
+
 if [[ ! -z "${CNAME}" ]]; then
+    if [[ ! -f "${DEST}/CNAME" ]]; then
+        exit 1
+    fi
     if [[ ! "${CNAME}" == "$(cat ${DEST}/CNAME)" ]]; then
         exit 1
     fi
 fi
+
+set -eu
 
 echo '🎁 Publish to remote repository'
 cd ${DEST}

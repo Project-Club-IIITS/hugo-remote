@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [[ -z ${CNAME} ]]; then
+    CNAME=""
+fi
+
 # Fail if variables are unset
 set -eu -o pipefail
 
